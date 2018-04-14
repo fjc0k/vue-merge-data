@@ -1,0 +1,79 @@
+{
+  "name": "vue-merge-data",
+  "version": "0.0.1",
+  "description": "Intelligently merge data for Vue render functions.",
+  "license": "MIT",
+  "main": "dist/vue-merge-data.cjs.js",
+  "module": "dist/vue-merge-data.es.js",
+  "unpkg": "dist/vue-merge-data.min.js",
+  "jsdelivr": "dist/vue-merge-data.min.js",
+  "homepage": "https://github.com/fjc0k/vue-merge-data",
+  "author": {
+    "name": "fjc0k",
+    "email": "fjc0kb@gmail.com",
+    "url": "https://github.com/fjc0k"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fjc0k/vue-merge-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fjc0k/vue-merge-data/issues"
+  },
+  "firb": {
+    "entry": {
+      "vue-merge-data": [
+        "src/index.js",
+        "VueMergeData"
+      ]
+    }
+  },
+  "keywords": [
+    "vue",
+    "render",
+    "component",
+    "merge",
+    "data"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "bundler",
+    "release": "standard-version -a",
+    "firstrelease": "yarn release --first-release",
+    "postrelease": "git push --follow-tags origin master && npm publish"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "yarn build && git add dist"
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "@fir-ui/fir"
+  },
+  "eslintIgnore": [
+    "dist"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@fir-ui/library"
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@fir-ui/babel-preset-library": "^0.0.11",
+    "@fir-ui/bundler": "^0.4.5",
+    "@fir-ui/eslint-config-fir": "^0.3.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
+    "codecov": "^3.0.0",
+    "eslint": "^4.19.1",
+    "jest": "^22.4.3",
+    "standard-version": "^4.3.0"
+  }
+}
