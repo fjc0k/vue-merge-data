@@ -8,3 +8,21 @@
 [![license](https://img.shields.io/github/license/fjc0k/vue-merge-data.svg?style=for-the-badge)](https://github.com/fjc0k/vue-merge-data/blob/master/LICENSE)
 
 
+Intelligently merge data for Vue render functions.
+
+## Install
+
+BY   | HOW
+-----|------------------------------------------------------
+Yarn | `yarn add vue-merge-data`
+NPM  | `npm i vue-merge-data`
+CDN  | `<script src="//unpkg.com/vue-merge-data"></script>`
+
+
+## Import
+
+BY       | HOW
+---------|-----------------------------------------------
+ESModule | `import mergeData from 'vue-merge-data'`
+CommonJS | `const mergeData = require('vue-merge-data')`
+CDN      | `var mergeData = window.VueMergeData`
