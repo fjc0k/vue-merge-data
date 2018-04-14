@@ -59,4 +59,5 @@ export default function mergeData(target, source) {
       target[propName] = sourceValue
     }
   }
+  return target
 }
