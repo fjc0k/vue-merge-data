@@ -1,6 +1,6 @@
 {
   "name": "vue-merge-data",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Intelligently merge data for Vue render functions.",
   "license": "MIT",
   "main": "dist/vue-merge-data.cjs.js",
