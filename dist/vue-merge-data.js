@@ -1,5 +1,5 @@
 /*!
- * vue-merge-data v0.0.5
+ * vue-merge-data v0.1.0
  * (c) 2018-present fjc0k <fjc0kb@gmail.com> (https://github.com/fjc0k)
  * Released under the MIT License.
  */
@@ -76,6 +76,8 @@
         target[propName] = sourceValue;
       }
     }
+
+    return target;
   }
 
   return mergeData;
