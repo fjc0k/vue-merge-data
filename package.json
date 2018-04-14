@@ -43,11 +43,12 @@
     "build": "bundler",
     "release": "standard-version -a",
     "firstrelease": "yarn release --first-release",
-    "postrelease": "git push --follow-tags origin master && npm publish"
+    "postrelease": "git push --follow-tags origin master && npm publish",
+    "gensize": "node ./script/gen-umd-bundle-size.js"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist"
+      "postbump": "yarn build && yarn gensize && git add dist README.md"
     }
   },
   "eslintConfig": {
@@ -73,6 +74,8 @@
     "babel-jest": "^22.4.3",
     "codecov": "^3.0.0",
     "eslint": "^4.19.1",
+    "filesize": "^3.6.1",
+    "gzip-size": "^4.1.0",
     "jest": "^22.4.3",
     "standard-version": "^4.3.0"
   }
