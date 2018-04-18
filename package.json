@@ -20,14 +20,6 @@
   "bugs": {
     "url": "https://github.com/fjc0k/vue-merge-data/issues"
   },
-  "firb": {
-    "entry": {
-      "vue-merge-data": [
-        "src/index.js",
-        "VueMergeData"
-      ]
-    }
-  },
   "keywords": [
     "vue",
     "render",
@@ -40,15 +32,13 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "build": "bundler",
+    "build": "bdr",
     "release": "standard-version -a",
-    "firstrelease": "yarn release --first-release",
-    "postrelease": "git push --follow-tags origin master && npm publish",
-    "gensize": "node ./script/gen-umd-bundle-size.js"
+    "postrelease": "git push --follow-tags origin master && npm publish"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && yarn gensize && git add dist README.md"
+      "postbump": "yarn build && git add dist README.md"
     }
   },
   "eslintConfig": {
@@ -68,14 +58,12 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
     "@fir-ui/babel-preset-library": "^0.0.11",
-    "@fir-ui/bundler": "^0.4.5",
     "@fir-ui/eslint-config-fir": "^0.3.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^22.4.3",
+    "bdr": "^1.2.0",
     "codecov": "^3.0.0",
     "eslint": "^4.19.1",
-    "filesize": "^3.6.1",
-    "gzip-size": "^4.1.0",
     "jest": "^22.4.3",
     "standard-version": "^4.3.0"
   }
