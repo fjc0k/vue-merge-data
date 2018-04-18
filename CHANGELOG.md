@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/fjc0k/vue-merge-data/compare/v0.1.0...v0.1.1) (2018-04-18)
+
+
+### Bug Fixes
+
+* shallow copy target ([1fece6a](https://github.com/fjc0k/vue-merge-data/commit/1fece6a))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/fjc0k/vue-merge-data/compare/v0.0.5...v0.1.0) (2018-04-14)
 

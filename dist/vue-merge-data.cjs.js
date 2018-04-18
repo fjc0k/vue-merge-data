@@ -1,17 +1,35 @@
 /*!
- * vue-merge-data v0.1.0
+ * vue-merge-data v0.1.1
  * (c) 2018-present fjc0k <fjc0kb@gmail.com> (https://github.com/fjc0k)
  * Released under the MIT License.
  */
 'use strict';
 
 /* eslint guard-for-in: 0, no-case-declarations: 0, max-depth: 0 */
-var keys = Object.keys;
-function mergeData(target, source) {
-  var propNames = keys(source);
+var assign = function assign(target, source, handler) {
+  var sourceKeys = Object.keys(source);
 
-  for (var i in propNames) {
-    var propName = propNames[i];
+  for (var index in sourceKeys) {
+    var sourceKey = sourceKeys[index];
+
+    if (source[sourceKey] != null) {
+      // eslint-disable-line
+      if (handler) {
+        handler(sourceKey, target, source);
+      } else {
+        target[sourceKey] = source[sourceKey];
+      }
+    }
+  }
+
+  return target;
+};
+
+function mergeData(target, source) {
+  // Shallow copy target
+  target = assign({}, target); // Merge
+
+  assign(target, source, function (propName) {
     var targetValue = target[propName];
     var sourceValue = source[propName];
 
@@ -30,13 +48,7 @@ function mergeData(target, source) {
         case 'props':
         case 'hook':
         case 'transition':
-          var props = keys(sourceValue);
-
-          for (var ii in props) {
-            var prop = props[ii];
-            targetValue[prop] = sourceValue[prop];
-          }
-
+          assign(targetValue, sourceValue);
           break;
         // expand
 
@@ -49,18 +61,13 @@ function mergeData(target, source) {
 
         case 'on':
         case 'nativeOn':
-          var listenerNames = keys(sourceValue);
-
-          for (var _ii in listenerNames) {
-            var listenerName = listenerNames[_ii];
-
+          assign(targetValue, sourceValue, function (listenerName) {
             if (targetValue[listenerName]) {
               targetValue[listenerName] = [].concat(sourceValue[listenerName], targetValue[listenerName]);
             } else {
               targetValue[listenerName] = sourceValue[listenerName];
             }
-          }
-
+          });
           break;
         // override
 
@@ -71,8 +78,7 @@ function mergeData(target, source) {
     } else {
       target[propName] = sourceValue;
     }
-  }
-
+  });
   return target;
 }
 
