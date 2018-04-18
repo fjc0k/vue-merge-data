@@ -1,11 +1,26 @@
 /* eslint guard-for-in: 0, no-case-declarations: 0, max-depth: 0 */
 
-const keys = Object.keys
+const assign = function (target, source, handler) {
+  const sourceKeys = Object.keys(source)
+  for (const index in sourceKeys) {
+    const sourceKey = sourceKeys[index]
+    if (source[sourceKey] != null) { // eslint-disable-line
+      if (handler) {
+        handler(sourceKey, target, source)
+      } else {
+        target[sourceKey] = source[sourceKey]
+      }
+    }
+  }
+  return target
+}
 
 export default function mergeData(target, source) {
-  const propNames = keys(source)
-  for (const i in propNames) {
-    const propName = propNames[i]
+  // Shallow copy target
+  target = assign({}, target)
+
+  // Merge
+  assign(target, source, propName => {
     const targetValue = target[propName]
     const sourceValue = source[propName]
     if (targetValue) {
@@ -22,11 +37,7 @@ export default function mergeData(target, source) {
         case 'props':
         case 'hook':
         case 'transition':
-          const props = keys(sourceValue)
-          for (const ii in props) {
-            const prop = props[ii]
-            targetValue[prop] = sourceValue[prop]
-          }
+          assign(targetValue, sourceValue)
           break
         // expand
         case 'class':
@@ -37,9 +48,7 @@ export default function mergeData(target, source) {
         // expand
         case 'on':
         case 'nativeOn':
-          const listenerNames = keys(sourceValue)
-          for (const ii in listenerNames) {
-            const listenerName = listenerNames[ii]
+          assign(targetValue, sourceValue, listenerName => {
             if (targetValue[listenerName]) {
               targetValue[listenerName] = [].concat(
                 sourceValue[listenerName],
@@ -48,7 +57,7 @@ export default function mergeData(target, source) {
             } else {
               targetValue[listenerName] = sourceValue[listenerName]
             }
-          }
+          })
           break
         // override
         default:
@@ -58,6 +67,7 @@ export default function mergeData(target, source) {
     } else {
       target[propName] = sourceValue
     }
-  }
+  })
+
   return target
 }
