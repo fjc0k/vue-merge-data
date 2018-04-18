@@ -51,17 +51,16 @@
   "babel": {
     "presets": [
       [
-        "@fir-ui/library"
+        "@bdr/bdr"
       ]
     ]
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
-    "@fir-ui/babel-preset-library": "^0.0.11",
     "@fir-ui/eslint-config-fir": "^0.3.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^22.4.3",
-    "bdr": "^1.2.0",
+    "bdr": "^1.3.4",
     "codecov": "^3.0.0",
     "eslint": "^4.19.1",
     "jest": "^22.4.3",
