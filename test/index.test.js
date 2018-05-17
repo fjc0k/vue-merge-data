@@ -60,11 +60,18 @@ const source = {
   }
 }
 
+const source2 = {
+  attrs: {
+    new: true
+  }
+}
+
 const result = {
   attrs: {
     disabled: true,
     id: 'btn',
-    type: 'button'
+    type: 'button',
+    new: true
   },
   class: [
     'btn3',
@@ -115,5 +122,5 @@ const result = {
 }
 
 test('The merged data is correct.', () => {
-  expect(mergeData(target, source)).toEqual(result)
+  expect(mergeData(target, source, source2)).toEqual(result)
 })
