@@ -1,5 +1,5 @@
 /*!
- * vue-merge-data v0.2.0
+ * vue-merge-data v0.2.1
  * (c) 2018-present fjc0k <fjc0kb@gmail.com> (https://github.com/fjc0k)
  * Released under the MIT License.
  */
